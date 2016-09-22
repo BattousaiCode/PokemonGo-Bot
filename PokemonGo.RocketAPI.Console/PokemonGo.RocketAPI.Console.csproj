@@ -211,6 +211,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="SingletonSettings.cs" />
     <Compile Include="TeamSelect.cs">
       <SubType>Form</SubType>
     </Compile>

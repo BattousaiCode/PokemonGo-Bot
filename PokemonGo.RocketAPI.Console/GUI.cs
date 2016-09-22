@@ -46,6 +46,9 @@ namespace PokemonGo.RocketAPI.Console
 
         private void GUI_Load(object sender, EventArgs e)
         {
+            //BattousaiCode => Binding text control to the Singleton Property
+            ProfileName.DataBindings.Add("Text", SingletonSettings.Instance.AccountInfo, "ProfileName");
+
             _clientSettings = new Settings();
             Globals.FirstLoad = false;
             var ret = MessageBox.Show("The Bot isn't done! Be aware that you can get banned!\n\nDon't login with the new App Version (0.3.7) (0.3.5 is ok!)\n\nOr you will probably get Banned if you use the bot again!\n\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -240,6 +243,10 @@ namespace PokemonGo.RocketAPI.Console
                     var config = Newtonsoft.Json.JsonConvert.DeserializeObject<Settings>(configString, settings);
                     // tab 1 
                     ProfileName.Text = config.ProfileName;
+
+                    //BattousaiCode => Loading the singleton property
+                    SingletonSettings.Instance.AccountInfo.ProfileName = config.ProfileName;
+
                     checkBox1.Checked = config.IsDefault;
 
                     comboBox_AccountType.SelectedIndex = 1;
